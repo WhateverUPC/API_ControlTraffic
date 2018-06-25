@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 header('Access-Control-Allow-Origin: *');
 require APPPATH . '/libraries/REST_Controller.php';
 
-class Projects extends REST_Controller
+class Users extends REST_Controller
 {
     public function __construct()
     {
