@@ -28,7 +28,7 @@ class Projects extends REST_Controller
 
         $this->load->model("Project_model");
 
-        $this->response($this->Project_model->get($id));
+        $this->response($this->Project_model->get_from_user($id));
     }
 
     public function all_get()
