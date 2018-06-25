@@ -32,6 +32,7 @@ class Users extends REST_Controller
     public function find_get(){
         ($this->get("id")) ? $id = $this->get("id") : $id = "";
 
+        $this->load->model("User_model");
         $this->response($this->User_model->get($id));
     }
 
