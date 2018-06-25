@@ -13,14 +13,29 @@ class Projects extends REST_Controller
         $this->load->helper("url");
     }
 
-    public function login_get()
+    public function get()
     {
-        ($this->get("username")) ? $username = $this->get("username") : $username = "";
-        ($this->get("password")) ? $password = $this->get("password") : $password = "";
+        ($this->get("id")) ? $id = $this->get("id") : $id = "";
 
-        $this->load->model("User_model");
+        $this->load->model("Project_model");
 
-        $this->response($this->User_model->login($username, $password));
+        $this->response($this->Project_model->get($id));
+    }
+
+    public function user_get()
+    {
+        ($this->get("id")) ? $id = $this->get("id") : $id = "";
+
+        $this->load->model("Project_model");
+
+        $this->response($this->Project_model->get($id));
+    }
+
+    public function all_get()
+    {
+        $this->load->model("Project_model");
+
+        $this->response($this->Project_model->get_all());
     }
 
 }

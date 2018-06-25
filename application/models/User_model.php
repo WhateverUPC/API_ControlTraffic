@@ -7,7 +7,7 @@ class User_model extends CI_Model
         $sql = "SELECT * FROM users";
         $users = $this->db->query($sql)->result();
 
-        if($users) $status = 1;
+        if($users) $status = 1; else $status = 0;
 
         return array("status" => $status,
                      "users" => $users);
@@ -52,7 +52,7 @@ class User_model extends CI_Model
         $sql = "SELECT * FROM users WHERE id = {$id}";
         $user = $this->db->query($sql)->first_row();
 
-        if($user) $status = 1;
+        if($user) $status = 1; else $status = 0;
 
         return array("status" => $status,
                      "user" => $user);
