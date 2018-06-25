@@ -5,7 +5,12 @@ class User_model extends CI_Model
     public function get_all()
     {
         $sql = "SELECT * FROM users";
-        return $this->db->query($sql)->result();
+        $users = $this->db->query($sql)->result();
+
+        if($users) $status = 1;
+
+        return array("status" => $status,
+                     "users" => $users);
     }
 
     public function login($my_username, $my_password)
@@ -40,6 +45,17 @@ class User_model extends CI_Model
                      "fullname" => $fullname,
                      "email"    => $email);
         
+    }
+
+    public function get($id)
+    {
+        $sql = "SELECT * FROM users WHERE id = {$id}";
+        $user = $this->db->query($sql)->result();
+
+        if($user) $status = 1;
+
+        return array("status" => $status,
+                     "user" => $user);
     }
 
 }

@@ -23,4 +23,16 @@ class Users extends REST_Controller
         $this->response($this->User_model->login($username, $password));
     }
 
+    public function all_get(){
+        $this->load->model("User_model");
+
+        $this->response($this->User_model->get_all());
+    }
+
+    public function find_get(){
+        ($this->get("id")) ? $id = $this->get("id") : $id = "";
+
+        $this->response($this->User_model->get($id));
+    }
+
 }
