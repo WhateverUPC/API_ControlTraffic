@@ -8,12 +8,12 @@ class User_model extends CI_Model
         return $this->db->query($sql)->result();
     }
 
-    public function login($username, $password)
+    public function login($my_username, $my_password)
     {
         $sql = "SELECT IF( EXISTS(
                 SELECT username
                 FROM users
-                WHERE (username LIKE '{$username}' AND password LIKE '{$password}')), 1, 0) as login_success";
+                WHERE (username LIKE '{$my_username}' AND password LIKE '{$my_password}')), 1, 0) as login_success";
         
         $result_login = $this->db->query($sql)->first_row();
         
@@ -25,7 +25,7 @@ class User_model extends CI_Model
 
         if($result_login->login_success == 1)
         {
-            $sql_user = "SELECT id, fullname, username, email FROM users WHERE username = '{$username}' AND password = '{$password}'";
+            $sql_user = "SELECT id, fullname, username, email FROM users WHERE username = '{$my_username}' AND password = '{$my_password}'";
             $result_user = $this->db->query($sql_user)->first_row();
 
             $id        = $result_user->id;
@@ -34,7 +34,7 @@ class User_model extends CI_Model
             $email     = $result_user->email;
         }
 
-        return array("logged"   => $result_login->login_success,
+        return array("logged"   => $result_login,
                      "id"       => $id,
                      "username" => $username,
                      "fullname" => $fullname,
