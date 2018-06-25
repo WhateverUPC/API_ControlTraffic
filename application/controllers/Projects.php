@@ -13,7 +13,7 @@ class Projects extends REST_Controller
         $this->load->helper("url");
     }
 
-    public function get()
+    public function find_get()
     {
         ($this->get("id")) ? $id = $this->get("id") : $id = "";
 
