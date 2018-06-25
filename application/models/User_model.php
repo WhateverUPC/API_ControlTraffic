@@ -19,6 +19,7 @@ class User_model extends CI_Model
         
         $id        = null;
         $username  = null;
+        $fullname  = null;
         $full_name = null;
         $email     = null;
 
