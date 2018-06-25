@@ -50,7 +50,7 @@ class User_model extends CI_Model
     public function get($id)
     {
         $sql = "SELECT * FROM users WHERE id = {$id}";
-        $user = $this->db->query($sql)->result();
+        $user = $this->db->query($sql)->first_row();
 
         if($user) $status = 1;
 
