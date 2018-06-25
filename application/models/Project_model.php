@@ -35,4 +35,17 @@ class Project_model extends CI_Model
                      "projects" => $projects);
     }
 
+    public function entry($projectid, $userid, $direction){
+        $hour = date("H:i");
+        $sql = "INSERT INTO project_entry (project_id, user_id, entry_date, entry_hour, direction) VALUES ({$projectid}, {$userid}, CURDATE(), '{$hour}', '{$direction}')";
+
+        if($this->db->query($sql)){
+            $status = 1;
+        } else{
+            $status = 0;
+        }
+
+        return array("status" => $status);
+    }
+
 }

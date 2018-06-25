@@ -38,4 +38,14 @@ class Projects extends REST_Controller
         $this->response($this->Project_model->get_all());
     }
 
+    public function entry_get()
+    {
+        $this->load->model("Project_model");
+        ($this->get("projectid")) ? $id = $this->get("projectid") : $projectid = "";
+        ($this->get("userid")) ? $id = $this->get("userid") : $userid = "";
+        ($this->get("directionid")) ? $id = $this->get("direction") : $direction = "";
+
+        $this->response($this->Project_model->entry($projectid, $userid, $direction));
+    }
+
 }
