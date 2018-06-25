@@ -26,7 +26,7 @@ class User_model extends CI_Model
         if($result_login->login_success == 1)
         {
             $sql_user = "SELECT id, fullname, username, email FROM users WHERE username = '{$username}' AND password = '{$password}'";
-            $result_user = $this->db->query($sql)->first_row();
+            $result_user = $this->db->query($sql_user)->first_row();
 
             $id        = $result_user->id;
             $username  = $result_user->username;
