@@ -34,7 +34,7 @@ class User_model extends CI_Model
             $email     = $result_user->email;
         }
 
-        return array("logged"   => $result_login,
+        return array("logged"   => $result_login->login_success,
                      "id"       => $id,
                      "username" => $username,
                      "fullname" => $fullname,
